@@ -3,22 +3,22 @@
  * @Date: 2025-12-16
  * @LastEditors: zijin Wu
  * @LastEditTime: 2025-12-16
- * @Description: 生日祝福页面，包含动态蛋糕和滚动内容
+ * @Description: 母亲节祝福页面，包含动态蛋糕和滚动内容
 -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
-    <title>Happy Birthday</title>
+    <title>Happy Mother's Day</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
     <style>
         body {
-            background-color: #000;
+            background: linear-gradient(180deg, #fff4f7 0%, #fde7ee 55%, #f4d1dc 100%);
             margin: 0;
             padding: 0;
-            color: #C89568;
+            color: #6a3a46;
             font-family: 'Playfair Display', serif;
             overflow-x: hidden;
         }
@@ -27,6 +27,81 @@
         html {
             height: 100%;
             width: 100%;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(255, 229, 239, 0.35), transparent 28%),
+                radial-gradient(circle at 80% 10%, rgba(255, 206, 221, 0.18), transparent 25%),
+                radial-gradient(circle at 60% 80%, rgba(255, 244, 248, 0.24), transparent 26%);
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.18), transparent 18%),
+                radial-gradient(circle at 70% 75%, rgba(255, 240, 246, 0.14), transparent 16%);
+            pointer-events: none;
+        }
+
+        .wish-flower {
+            position: absolute;
+            left: 10%;
+            top: 15%;
+            width: 12rem;
+            height: 12rem;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 227, 238, 0.86), transparent 35%),
+                radial-gradient(circle at 70% 65%, rgba(255, 207, 222, 0.45), transparent 40%);
+            filter: blur(1px);
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        .wish-meta {
+            position: absolute;
+            top: 1.3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 242, 247, 0.92);
+            border-radius: 999px;
+            box-shadow: 0 18px 28px -18px rgba(209, 122, 153, 0.18);
+            z-index: 10;
+            backdrop-filter: blur(6px);
+        }
+
+        .meta-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 0.85rem;
+            border-radius: 999px;
+            background: rgba(255, 220, 232, 0.72);
+            color: #6a3a46;
+            font-size: 0.9rem;
+            letter-spacing: 0.08rem;
+        }
+
+        #mask {
+            position: absolute;
+            background-color: rgba(255, 226, 236, 0.14);
+            width: 100%;
+            height: 100%;
+            font-size: 15rem;
+            animation: shack 0.4s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            display: none;
+            color: rgba(209, 122, 153, 0.95);
         }
 
         .section {
@@ -80,7 +155,7 @@
             font-size: clamp(42px, 6.3vw, 74px);
             letter-spacing: 0.08em;
             font-weight: 700;
-            text-shadow: 0 0 16px rgba(200, 149, 104, 0.38);
+            text-shadow: 0 0 16px rgba(210, 124, 146, 0.32);
             margin-bottom: 0.28em;
         }
 
@@ -88,7 +163,7 @@
             font-size: clamp(26px, 3.6vw, 42px);
             letter-spacing: 0.1em;
             font-style: italic;
-            color: rgba(227, 190, 152, 0.95);
+            color: rgba(162, 80, 116, 0.95);
             margin-bottom: 0.42em;
         }
 
@@ -96,12 +171,13 @@
             font-size: clamp(21px, 2.6vw, 31px);
             max-width: 22ch;
             margin: 0 auto 0.45em;
+            color: rgba(120, 71, 97, 0.92);
         }
 
         #wishSignatureLine {
             font-size: clamp(16px, 1.8vw, 22px);
             letter-spacing: 0.08em;
-            color: rgba(227, 190, 152, 0.88);
+            color: rgba(120, 71, 97, 0.88);
         }
 
         .header-item.show {
@@ -114,7 +190,7 @@
 
         #mask {
             position: absolute;
-            background-color: #000;
+            background-color: rgba(255, 226, 236, 0.14);
             width: 100%;
             height: 100%;
             font-size: 15rem;
@@ -124,6 +200,7 @@
             justify-content: center;
             cursor: pointer;
             display: none;
+            color: rgba(209, 122, 153, 0.95);
         }
 
         @keyframes shack {
@@ -304,6 +381,24 @@
             text-align: right;
         }
 
+        .wish-photo-frame {
+            width: min(360px, 90vw);
+            margin: 0 auto 1.5rem;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 22px 44px -28px rgba(200, 149, 104, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+        }
+
+        .wish-photo-frame img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 4 / 3;
+        }
+
         .wish-meta {
             position: absolute;
             width: min(92vw, 980px);
@@ -402,18 +497,21 @@
     <audio id="bgMusic" loop preload="auto">
         <source src="audio/background.mp3" type="audio/mpeg">
     </audio>
-    <div id="mask">🎄</div>
+    <div id="mask">🌷</div>
     <canvas id="starCanvas"></canvas>
     <div class="wish-meta">
-        <span class="meta-pill" id="wishAgeBadge">18 岁纪念章</span>
-        <span class="meta-pill" id="wishDateBadge">生日：12.25</span>
+        <span class="meta-pill" id="wishAgeBadge">18 岁温情章</span>
+        <span class="meta-pill" id="wishDateBadge">母亲节：05.10</span>
         <span class="meta-pill" id="wishSourceBadge">模板：诗意混合生成</span>
     </div>
 
     <!-- 第一区块：蛋糕在上，文字在下，居中布局 -->
     <section class="section">
         <div class="main">
-            <!-- 生日蛋糕SVG：尺寸放大+颜色统一 -->
+            <div class="wish-photo-frame" id="wishPhotoContainer" hidden>
+                <img id="wishPhoto" alt="祝福照片展示" />
+            </div>
+            <!-- 母亲节蛋糕SVG：尺寸放大+颜色统一 -->
             <svg class="mainSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                 viewBox="0 0 800 600">
                 <defs>
@@ -548,12 +646,12 @@
                 </g>
             </svg>
 
-            <!-- 生日祝福语：蛋糕下方居中 -->
+            <!-- 母亲节祝福语：蛋糕下方居中 -->
             <h1 id="header">
-                <p class="header-item" id="wishRecipient">邓林杉</p>
-                <p class="header-item" id="wishHeadline">Happy Birthday!</p>
-                <p class="header-item" id="wishLead">祝你：梦想成真&前程似锦！</p>
-                <p class="header-item" id="wishSignatureLine">跟着你，勇敢的走下去</p>
+                <p class="header-item" id="wishRecipient">亲爱的妈妈</p>
+                <p class="header-item" id="wishHeadline">Happy Mother's Day!</p>
+                <p class="header-item" id="wishLead">母亲节快乐，愿你被温柔和感谢围绕。</p>
+                <p class="header-item" id="wishSignatureLine">永远爱你的孩子</p>
             </h1>
         </div>
 
@@ -610,7 +708,7 @@
             const svg = document.querySelector('.mainSVG');
             gsap.set(svg, { visibility: 'visible' });
 
-            // 2. 生日祝福语渐显动画
+            // 2. 母亲节祝福语渐显动画
             const headerItems = document.querySelectorAll('.header-item');
             headerItems.forEach((item, index) => {
                 setTimeout(() => {

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Minimalist Luxury Celebration</title>
+    <title>母亲节专属祝福</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,10 +18,12 @@
     <canvas id="luxCanvas"></canvas>
 
     <div class="overlay">
+        <div class="petal-decor petal-decor--soft" aria-hidden="true"></div>
+        <div class="petal-decor petal-decor--sparkle" aria-hidden="true"></div>
         <section class="creator-panel" id="creatorPanel">
-            <p class="creator-eyebrow">Custom Birthday Link Studio</p>
-            <h1 class="creator-title">把祝福写成一首只属于 TA 的诗</h1>
-            <p class="creator-subtitle">输入关键信息与心意片段，系统会自动编排为三段祝福诗</p>
+            <p class="creator-eyebrow">母亲节专属祝福生成器</p>
+            <h1 class="creator-title">把祝福写成一首只属于妈妈的诗</h1>
+            <p class="creator-subtitle">输入关键信息与心意片段，系统会自动编排为三段母亲节祝福诗</p>
 
             <form class="creator-form" id="wishForm" novalidate>
                 <label class="form-label" for="recipientName">被祝福者姓名</label>
@@ -30,15 +32,15 @@
 
                 <div class="form-row">
                     <div class="form-col">
-                        <label class="form-label" for="recipientAge">年龄</label>
+                        <label class="form-label" for="recipientAge">妈妈年龄</label>
                         <input class="form-input" id="recipientAge" name="recipientAge" type="number" min="1" max="150"
-                            placeholder="18" required />
+                            placeholder="45" required />
                     </div>
                     <div class="form-col">
-                        <label class="form-label" for="birthdayDate">今年生日日期</label>
+                        <label class="form-label" for="birthdayDate">今年母亲节日期</label>
                         <div class="date-field" id="dateField">
                             <input class="form-input date-input" id="birthdayDate" name="birthdayDate" type="text"
-                                inputmode="numeric" autocomplete="off" placeholder="例如：2026-04-11" required />
+                                inputmode="numeric" autocomplete="off" placeholder="例如：2026-05-10" required />
                             <button class="calendar-trigger" id="calendarTrigger" type="button"
                                 aria-label="打开日期选择面板">日历</button>
                             <div class="date-picker-panel" id="datePickerPanel" hidden>
@@ -63,15 +65,26 @@
 
                 <label class="form-label" for="wishLines">写下祝福关键词或一句话心意</label>
                 <textarea class="form-textarea" id="wishLines" name="wishLines" rows="6" maxlength="900"
-                    placeholder="例如：勇敢、自由、热爱、闪光，或输入一段想说的话" required></textarea>
+                    placeholder="例如：温柔、陪伴、力量、感谢，或输入一段想说的话" required></textarea>
 
+                <div class="form-row photo-upload-row">
+                    <div class="form-col">
+                        <label class="form-label" for="photoUpload">上传照片（可选）</label>
+                        <input class="form-input" id="photoUpload" name="photoUpload" type="file" accept="image/*" />
+                        <p class="form-hint">仅供本地预览，图片不会直接嵌入分享链接。</p>
+                    </div>
+                    <div class="photo-preview" id="photoPreview" hidden>
+                        <img id="photoPreviewImage" alt="预览照片" />
+                        <p class="photo-preview-label">已选照片预览</p>
+                    </div>
+                </div>
 
                 <label class="form-label" for="signature">落款</label>
                 <input class="form-input" id="signature" name="signature" type="text" maxlength="40"
                     placeholder="例如：你的好朋友李四" required />
 
                 <div class="creator-actions">
-                    <button class="main-button" id="generateButton" type="submit">一键生成专属链接</button>
+                    <button class="main-button" id="generateButton" type="submit">一键生成母亲节祝福链接</button>
                     <button class="secondary-button" id="previewButton" type="button" disabled>预览祝福页</button>
                 </div>
             </form>

@@ -1,21 +1,20 @@
 (() => {
     const defaults = {
-        name: "邓林杉",
-        age: 18,
-        signature: "跟着你，勇敢的走下去",
-        lead: "祝你：梦想成真&前程似锦！",
-        birthday: "2007-12-25",
+        name: "亲爱的妈妈",
+        age: 45,
+        signature: "永远爱你的孩子",
+        lead: "母亲节快乐，愿你被温柔和感谢围绕。",
+        birthday: "2026-05-10",
         sections: [
-            "我知这生命本就如露水般短暂",
-            "然而，然而……",
-            "人生下来不是为了拖着锁链，而是为了张开双翼。",
-            "絮雪飘扬，冰河滚烫",
-            "愿你于荆棘中成长，以热爱赴远方，明媚而坦荡",
-            "祝你的18岁快乐，年岁并往。",
-            "也祝你每一岁",
-            "都能毫无代价唱最幸福的歌",
-            "愿你可。"
-        ]
+            "你用岁月编织温柔的港湾，陪我走过风雨。",
+            "你是世间最美的坚持，细水流年里静静守护。",
+            "母亲节的花朵为你绽放，愿你每天都被爱拥抱。",
+            "感谢你用笑容点亮平凡时光，让家永远有光。",
+            "愿你的每一个明天都比今天更轻松、更快乐。",
+            "愿这一天成为属于你的温暖礼赞。",
+            "无论我走多远，心中最深的名字永远是你。",
+            "愿你被温柔以待，愿你笑容如初。",
+            "落款：永远爱你的孩子。"
     };
 
     const MAX_LENGTH = {
@@ -94,6 +93,7 @@
         const signature = safeText(params.get("signature") || "", MAX_LENGTH.signature);
         const lines = parseWishLines(params.get("wishes"));
         const source = safeText(params.get("source") || "mixed", 20);
+        const photoKey = safeText(params.get("photoKey") || "", 60);
 
         const lead = lines[1] || defaults.lead;
         const signatureLine = lines[8] || (signature ? `落款：${signature}` : defaults.signature);
@@ -114,7 +114,7 @@
 
         const nodeMap = {
             wishRecipient: name,
-            wishHeadline: `Happy ${toOrdinal(age)} Birthday!`,
+            wishHeadline: `Happy Mother's Day!`,
             wishLead: lead,
             wishSignatureLine: signatureLine,
             section1Title: sectionValues[0],
@@ -137,13 +137,13 @@
 
         const ageBadge = document.getElementById("wishAgeBadge");
         if (ageBadge) {
-            ageBadge.textContent = `${age} 岁纪念章`;
+            ageBadge.textContent = `${age} 岁温情章`;
         }
 
         const dateBadge = document.getElementById("wishDateBadge");
         if (dateBadge) {
             const birthdayText = birthday || defaults.birthday;
-            dateBadge.textContent = `生日：${birthdayText.replace(/-/g, ".")}`;
+            dateBadge.textContent = `母亲节：${birthdayText.replace(/-/g, ".")}`;
         }
 
         const sourceBadge = document.getElementById("wishSourceBadge");
@@ -151,7 +151,17 @@
             sourceBadge.textContent = source === "mixed" ? "模板：诗意混合生成" : "模板：经典祝福渲染";
         }
 
-        document.title = `${name} - Happy Birthday`;
+        document.title = `${name} - Happy Mother's Day`;
+
+        if (photoKey) {
+            const photoUrl = localStorage.getItem(photoKey);
+            const photoElement = document.getElementById("wishPhoto");
+            const photoContainer = document.getElementById("wishPhotoContainer");
+            if (photoUrl && photoElement && photoContainer) {
+                photoElement.src = photoUrl;
+                photoContainer.hidden = false;
+            }
+        }
     }
 
     window.addEventListener("DOMContentLoaded", render);

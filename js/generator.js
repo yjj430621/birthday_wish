@@ -1,64 +1,57 @@
 window.addEventListener("DOMContentLoaded", () => {
     const CURATED_WISH_LINES = [
-        "愿你在奔赴远方的路上，也始终被温柔回响。",
-        "愿你把每一次跌宕，都走成自己的星光。",
-        "愿你与热爱并肩，和岁月握手言欢。",
-        "愿你在平凡日子里，也能写出灿烂章节。",
-        "愿你眼里有山海，心中有松风与明月。",
-        "愿你不惧慢行，终会在自己的节奏里盛放。",
-        "愿你被真诚拥抱，也被世界轻轻偏爱。",
-        "愿你把今天的笑意，收藏成未来的勇气。",
-        "愿你走过四季，都有新故事值得珍藏。",
-        "愿你在每个清晨醒来，都仍然相信热望。",
-        "愿你把答案写在脚步里，把光亮藏在眼睛里。",
-        "愿你拥抱辽阔，也珍惜眼前细碎的幸福。",
-        "愿你在喧嚣之后，仍能听见内心的潮声。",
-        "愿你把疲惫折成纸船，让它顺流而去。",
-        "愿你在每一次重启里，都遇见更好的自己。",
-        "愿你把温柔分给世界，也分给自己。",
-        "愿你把脚下的路，走成心中想要的诗。",
-        "愿你在长夜尽头，迎来属于自己的晨曦。",
-        "愿你眉间有风，眼底有光，心上有花。",
-        "愿你把每次勇敢，都兑换成更辽阔的自由。",
-        "愿你在未知里不慌张，在热爱里有方向。",
-        "愿你和重要的人，年年都有好光景。",
-        "愿你仍有少年心，也有披荆斩棘的锋芒。",
-        "愿你把生活过成散文，也过成史诗。"
+        "愿你在温柔的光里，听见最美的名字。",
+        "愿你被爱包裹，如春日的花瓣轻轻落入掌心。",
+        "愿你的笑容，成为我们永远愿意回望的风景。",
+        "愿你在每个平凡日子，都被温暖和感谢轻轻绕梁。",
+        "愿你花开的时刻，被温柔的目光悉心守护。",
+        "愿你将疲惫放下，让每一次休憩都满是宠爱。",
+        "愿你从不缺少被理解和被呵护的理由。",
+        "愿每一个早晨，都有阳光为你绽放。",
+        "愿你看见自己的美好，也被世界温柔以待。",
+        "愿你在每一句问候里，收获满满的安心。",
+        "愿你远离焦虑，拥有属于你的宁静花园。",
+        "愿你把爱与被爱，悄悄写进生活的每一页。",
+        "愿你一路被花香围绕，岁月也因此更加温柔。",
+        "愿你在母亲节这一天，感受到最真挚的祝福。",
+        "愿你的每一次付出，都被温柔地记住。",
+        "愿你把今日的喜悦，留在心里最柔软的地方。",
+        "愿你继续将家过成诗，也让自己常常被宠爱。"
     ];
 
     const CHAPTER_TITLES = {
         first: [
-            "晨光与你",
-            "风把心意写满",
-            "给你的一封序言",
-            "花开时节的注脚"
+            "致母亲的晨光",
+            "花开的祝词",
+            "温柔序章",
+            "柔软的告白"
         ],
         second: [
-            "山海回信",
-            "给时光的回礼",
-            "把勇敢写进行囊",
-            "向远方缓缓启程"
+            "母亲节的回礼",
+            "你是最温暖的信笺",
+            "将爱写进每个日子",
+            "让时间也温柔起来"
         ],
         third: [
-            "星河落款",
-            "温柔有声",
-            "愿望在此停留",
-            "把明天轻轻点亮"
+            "永恒落款",
+            "心语轻唱",
+            "愿你被温柔拥抱",
+            "绽放在这一刻"
         ]
     };
 
     const CURATED_ENDINGS = [
-        "愿你在新一岁，把喜欢都过成日常。",
-        "愿你把今天的光，带去更远的地方。",
-        "愿你被岁月轻放，也被梦想郑重接住。",
-        "愿你在每一个明天，都比今天更自在。"
+        "愿你这一天，像花一样温柔盛放。",
+        "愿你的笑容，成为最美的母亲节礼物。",
+        "愿你在未来的日子里，常常被幸福围绕。",
+        "愿你把每一次付出，都换成值得的欢喜。"
     ];
 
     const CURATED_TAILS = [
-        "在四季流转里仍然闪亮。",
-        "让每个平凡时刻都长出光。",
-        "把热爱写进每一个清晨。",
-        "把勇敢活成你最自然的模样。"
+        "在温柔的守候中静静绽放。",
+        "让每一刻都变成温暖的纪念。",
+        "把谢谢写成最柔软的言语。",
+        "让这份感谢，永远留在心底。"
     ];
 
     const form = document.getElementById("wishForm");
@@ -78,14 +71,19 @@ window.addEventListener("DOMContentLoaded", () => {
     const calendarGrid = document.getElementById("calendarGrid");
     const calendarToday = document.getElementById("calendarToday");
     const calendarClear = document.getElementById("calendarClear");
-
-    if (!form || !sharePanel || !generatedLinkInput || !copyButton || !previewButton || !statusText || !birthdayInput || !dateField || !datePreview || !calendarTrigger || !datePickerPanel || !calendarPrev || !calendarNext || !calendarMonthLabel || !calendarGrid || !calendarToday || !calendarClear) {
-        return;
-    }
+    const photoUploadInput = document.getElementById("photoUpload");
+    const photoPreview = document.getElementById("photoPreview");
+    const photoPreviewImage = document.getElementById("photoPreviewImage");
 
     let latestLink = "";
+    let latestPhotoKey = "";
+    let latestPhotoDataUrl = "";
     let calendarYear = new Date().getFullYear();
     let calendarMonth = new Date().getMonth();
+
+    if (!form || !sharePanel || !generatedLinkInput || !copyButton || !previewButton || !statusText || !birthdayInput || !dateField || !datePreview || !calendarTrigger || !datePickerPanel || !calendarPrev || !calendarNext || !calendarMonthLabel || !calendarGrid || !calendarToday || !calendarClear || !photoUploadInput || !photoPreview || !photoPreviewImage) {
+        return;
+    }
 
     function setStatus(message) {
         statusText.textContent = message;
@@ -215,7 +213,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         const month = String(date.getMonth() + 1).padStart(2, "0");
         const day = String(date.getDate()).padStart(2, "0");
-        return `${date.getFullYear()}年${month}月${day}日 · 纪念日星光已点亮`;
+        return `${date.getFullYear()}年${month}月${day}日 · 母亲节温柔已点亮`;
     }
 
     function parseISODate(dateText) {
@@ -366,18 +364,18 @@ window.addEventListener("DOMContentLoaded", () => {
         }
 
         if (!birthday) {
-            return "请选择生日日期。";
+            return "请选择日期。";
         }
 
         const birthdayDate = parseISODate(birthday);
         if (!birthdayDate) {
-            return "生日日期无效，请重新选择。";
+            return "日期无效，请重新选择。";
         }
 
         const minDate = new Date("1900-01-01T00:00:00");
         const maxDate = new Date("2100-12-31T00:00:00");
         if (birthdayDate < minDate || birthdayDate > maxDate) {
-            return "生日日期超出可用范围（1900-2100）。";
+            return "日期超出可用范围（1900-2100）。";
         }
 
         if (fragments.length < 2) {
@@ -405,6 +403,9 @@ window.addEventListener("DOMContentLoaded", () => {
         params.set("signature", data.signature);
         params.set("wishes", JSON.stringify(data.wishes));
         params.set("source", data.source || "mixed");
+        if (data.photoKey) {
+            params.set("photoKey", data.photoKey);
+        }
         wishUrl.search = params.toString();
         return wishUrl.toString();
     }
@@ -453,7 +454,8 @@ window.addEventListener("DOMContentLoaded", () => {
             birthday,
             signature,
             wishes: poem,
-            source: "mixed"
+            source: "mixed",
+            photoKey: latestPhotoKey
         });
 
         // Keep URLs shareable across browsers and chat apps.
@@ -477,6 +479,44 @@ window.addEventListener("DOMContentLoaded", () => {
         const formatted = formatDateForPreview(birthdayInput.value);
         datePreview.textContent = formatted;
         dateField.classList.toggle("is-active", birthdayInput.value.length > 0);
+    }
+
+    function handlePhotoFile(file) {
+        if (!file) {
+            latestPhotoDataUrl = "";
+            latestPhotoKey = "";
+            photoPreview.hidden = true;
+            photoPreviewImage.src = "";
+            return;
+        }
+
+        if (!file.type.startsWith("image/")) {
+            setStatus("请选择图片文件。支持 JPG、PNG 等格式。");
+            photoUploadInput.value = "";
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            const dataUrl = String(reader.result || "");
+            if (dataUrl.length > 800000) {
+                setStatus("图片过大，请选择更小的照片。建议小于 800KB。");
+                photoUploadInput.value = "";
+                return;
+            }
+            latestPhotoDataUrl = dataUrl;
+            latestPhotoKey = `photo_${Date.now()}`;
+            try {
+                localStorage.setItem(latestPhotoKey, dataUrl);
+            } catch (error) {
+                console.warn("Local storage 保存图片失败", error);
+                latestPhotoKey = "";
+            }
+            photoPreviewImage.src = dataUrl;
+            photoPreview.hidden = false;
+            setStatus("照片已准备好，可生成带图片预览的祝福页。注意链接本地化，仅在当前设备可见。");
+        };
+        reader.readAsDataURL(file);
     }
 
     function triggerDateBurst() {
@@ -562,6 +602,11 @@ window.addEventListener("DOMContentLoaded", () => {
         if (event.key === "Escape" && !datePickerPanel.hidden) {
             closeCalendar();
         }
+    });
+
+    photoUploadInput.addEventListener("change", () => {
+        const file = photoUploadInput.files?.[0] || null;
+        handlePhotoFile(file);
     });
 
     refreshDateState();
