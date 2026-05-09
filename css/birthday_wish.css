@@ -19,7 +19,7 @@ body {
     background: linear-gradient(180deg, #fff5f8 0%, #fde7f0 55%, #f7d1df 100%);
     background: var(--bg-main, linear-gradient(180deg, #fff5f8 0%, #fde7f0 55%, #f7d1df 100%));
     color: var(--noir);
-    overflow: hidden;
+    overflow-x: hidden;
     position: relative;
     transition: background 1.4s ease, color 0.8s ease;
 }
@@ -130,6 +130,8 @@ canvas {
     pointer-events: none;
     z-index: 2;
     backdrop-filter: blur(0px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .creator-panel {
