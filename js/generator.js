@@ -71,17 +71,12 @@ window.addEventListener("DOMContentLoaded", () => {
     const calendarGrid = document.getElementById("calendarGrid");
     const calendarToday = document.getElementById("calendarToday");
     const calendarClear = document.getElementById("calendarClear");
-    const photoUploadInput = document.getElementById("photoUpload");
-    const photoPreview = document.getElementById("photoPreview");
-    const photoPreviewImage = document.getElementById("photoPreviewImage");
 
     let latestLink = "";
-    let latestPhotoKey = "";
-    let latestPhotoDataUrl = "";
     let calendarYear = new Date().getFullYear();
     let calendarMonth = new Date().getMonth();
 
-    if (!form || !sharePanel || !generatedLinkInput || !copyButton || !previewButton || !statusText || !birthdayInput || !dateField || !datePreview || !calendarTrigger || !datePickerPanel || !calendarPrev || !calendarNext || !calendarMonthLabel || !calendarGrid || !calendarToday || !calendarClear || !photoUploadInput || !photoPreview || !photoPreviewImage) {
+    if (!form || !sharePanel || !generatedLinkInput || !copyButton || !previewButton || !statusText || !birthdayInput || !dateField || !datePreview || !calendarTrigger || !datePickerPanel || !calendarPrev || !calendarNext || !calendarMonthLabel || !calendarGrid || !calendarToday || !calendarClear) {
         return;
     }
 
@@ -403,9 +398,6 @@ window.addEventListener("DOMContentLoaded", () => {
         params.set("signature", data.signature);
         params.set("wishes", JSON.stringify(data.wishes));
         params.set("source", data.source || "mixed");
-        if (data.photoKey) {
-            params.set("photoKey", data.photoKey);
-        }
         wishUrl.search = params.toString();
         return wishUrl.toString();
     }
@@ -454,8 +446,7 @@ window.addEventListener("DOMContentLoaded", () => {
             birthday,
             signature,
             wishes: poem,
-            source: "mixed",
-            photoKey: latestPhotoKey
+            source: "mixed"
         });
 
         // Keep URLs shareable across browsers and chat apps.
@@ -479,44 +470,6 @@ window.addEventListener("DOMContentLoaded", () => {
         const formatted = formatDateForPreview(birthdayInput.value);
         datePreview.textContent = formatted;
         dateField.classList.toggle("is-active", birthdayInput.value.length > 0);
-    }
-
-    function handlePhotoFile(file) {
-        if (!file) {
-            latestPhotoDataUrl = "";
-            latestPhotoKey = "";
-            photoPreview.hidden = true;
-            photoPreviewImage.src = "";
-            return;
-        }
-
-        if (!file.type.startsWith("image/")) {
-            setStatus("请选择图片文件。支持 JPG、PNG 等格式。");
-            photoUploadInput.value = "";
-            return;
-        }
-
-        const reader = new FileReader();
-        reader.onload = () => {
-            const dataUrl = String(reader.result || "");
-            if (dataUrl.length > 800000) {
-                setStatus("图片过大，请选择更小的照片。建议小于 800KB。");
-                photoUploadInput.value = "";
-                return;
-            }
-            latestPhotoDataUrl = dataUrl;
-            latestPhotoKey = `photo_${Date.now()}`;
-            try {
-                localStorage.setItem(latestPhotoKey, dataUrl);
-            } catch (error) {
-                console.warn("Local storage 保存图片失败", error);
-                latestPhotoKey = "";
-            }
-            photoPreviewImage.src = dataUrl;
-            photoPreview.hidden = false;
-            setStatus("照片已准备好，可生成带图片预览的祝福页。注意链接本地化，仅在当前设备可见。");
-        };
-        reader.readAsDataURL(file);
     }
 
     function triggerDateBurst() {
@@ -602,11 +555,6 @@ window.addEventListener("DOMContentLoaded", () => {
         if (event.key === "Escape" && !datePickerPanel.hidden) {
             closeCalendar();
         }
-    });
-
-    photoUploadInput.addEventListener("change", () => {
-        const file = photoUploadInput.files?.[0] || null;
-        handlePhotoFile(file);
     });
 
     refreshDateState();

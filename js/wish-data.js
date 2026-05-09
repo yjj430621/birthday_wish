@@ -15,6 +15,7 @@
             "无论我走多远，心中最深的名字永远是你。",
             "愿你被温柔以待，愿你笑容如初。",
             "落款：永远爱你的孩子。"
+        ]
     };
 
     const MAX_LENGTH = {
@@ -93,7 +94,6 @@
         const signature = safeText(params.get("signature") || "", MAX_LENGTH.signature);
         const lines = parseWishLines(params.get("wishes"));
         const source = safeText(params.get("source") || "mixed", 20);
-        const photoKey = safeText(params.get("photoKey") || "", 60);
 
         const lead = lines[1] || defaults.lead;
         const signatureLine = lines[8] || (signature ? `落款：${signature}` : defaults.signature);
@@ -152,16 +152,6 @@
         }
 
         document.title = `${name} - Happy Mother's Day`;
-
-        if (photoKey) {
-            const photoUrl = localStorage.getItem(photoKey);
-            const photoElement = document.getElementById("wishPhoto");
-            const photoContainer = document.getElementById("wishPhotoContainer");
-            if (photoUrl && photoElement && photoContainer) {
-                photoElement.src = photoUrl;
-                photoContainer.hidden = false;
-            }
-        }
     }
 
     window.addEventListener("DOMContentLoaded", render);
